@@ -1,0 +1,85 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.sign_whole{
+    display: flex;
+    background-color: white;
+    overflow: hidden;
+}
+.signcnt{
+
+    min-width: 60vw;
+    padding-right: 0vw;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.signcnt{
+    height: 99vh;
+}
+.signbgimg{
+    /* border: 1px solid black; */
+    width: 40vw;
+    height: 95vh;
+    -webkit-clip-path: polygon(70% 0, 100% 0, 100% 9%, 100% 66%, 54% 0);
+    clip-path: polygon(70% 0, 100% 0, 100% 9%, 100% 66%, 54% 0);
+    opacity: 0.5;
+    user-select: none;
+    -webkit-user-drag: none;
+    
+}
+.sign_frm{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+.sign_contain{
+    border: 1px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    width: 22vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    height: 50vh;
+    padding: 2vh;
+    
+    text-align: center;
+    justify-content: space-around;
+}
+.signhdg{
+    font-weight: 700;
+}
+.signinp{
+    height: 5vh;
+    padding-left: 5px;
+    outline: none;
+}
+.logredirect{
+    margin-top: 5vh;
+    border: 1px solid blue;
+    background-color: aliceblue;
+    border-radius: 5px;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+.logredirect:active{
+    transform: scale(1.02);
+}
+.signbtn{
+    cursor: pointer;
+    color: white;
+    background-color: deepskyblue;
+    border: none;
+    outline: none;
+    height: 5vh;
+    width: 10vw;
+    border-radius: 12px;
+}
+.signbtn:active{
+    transform: scale(1.1);
+}
