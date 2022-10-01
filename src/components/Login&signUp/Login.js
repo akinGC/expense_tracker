@@ -44,7 +44,7 @@ function Login() {
         })
         const data = await resp.json()
         if(!resp.ok){
-            alert(data.error.message)
+            alert(data.error.message) 
         }
         else{
             auth.setidToken(data.idToken)

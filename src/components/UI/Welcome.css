@@ -1,0 +1,94 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.wel_nav_contain{
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 3vh 2vw;
+    color: grey;
+    font-style: italic;
+}
+.nav_link{
+    text-decoration: none;
+    cursor: pointer;
+}
+.wel_nav_quote{
+    font-size: x-large;
+}
+.wel_nav_updatebtn{
+    padding: 2px 12px;
+    border-radius: 12px;
+    background-color: rgb(238, 228, 216);
+    
+    max-width: 30vw;
+}
+
+/* Update page  */
+.nav_up_cmp{
+    color: blue;
+    cursor: pointer;
+}
+.upd_content{
+
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+  gap: 6vh;
+    padding-left: 25%;
+    margin-top: 10vh;
+}
+.upd_frst{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10vw;
+}
+.upd_scnd{
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
+.upd_frst_txt{
+    font-weight: 700;
+    font-size: large;
+}
+.upd_frst_btn{
+    border: 1px solid salmon;
+    color: salmon;
+    padding: 4px 1vw;
+    user-select: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.upd_frst_btn:active{
+    transform: scale(1.1);
+}
+.upd_frst_btn:hover{
+   background-color: salmon;
+   color: white;
+}
+.upscnd_inp{
+    width: 15vw;
+}
+.inptitle{
+    margin: 0 2vw;
+    outline: none;
+}
+.upd_thrd{
+    background-color:indianred;
+    color: white;
+    width: 5vw;
+   display: flex;
+   
+   justify-content: center;
+    padding: 4px 1vw;
+    user-select: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.upd_thrd:active{
+    transform: scale(1.1);
+}
