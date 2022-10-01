@@ -1,7 +1,9 @@
 import './SignUp.css'
 import bgimg from '../Resources/signbg.png'
 import { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 function SignUp() {
+    const nav = useNavigate()
     const [val,seVal] = useState({
         mail:'',
         pass:'',
@@ -45,6 +47,7 @@ function SignUp() {
                 }
                 else{
                     console.log('user has successfully signed up!')
+                    nav('/login')
                 }
             }
             catch(err){
@@ -81,7 +84,7 @@ function SignUp() {
                     </form>
                     
                 </div>
-                <div className='logredirect'>Already have an account? Log In</div>
+              <NavLink className='navlnkclass' to='/login'> <div className='logredirect'>Already have an account? Log In</div></NavLink> 
             </div>
                 
             </div>
