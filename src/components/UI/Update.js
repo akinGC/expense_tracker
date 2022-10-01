@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
 import { faEdge } from '@fortawesome/free-brands-svg-icons';
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import './Welcome.css'
 import { useNavigate } from 'react-router-dom';
 import Contextcreate from '../context/Contextcreate';
@@ -61,6 +61,37 @@ function redirectowelPage(){
         console.log(err)
     }
 }
+async function initlFetch(){
+    try{
+        const resp = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBlpCleMXXgnN35xDSjEfIsKsfLOS6wNVM',{
+        method:'POST',
+        body:JSON.stringify({
+            idToken:auth.idToken
+        })
+
+    })
+    const data = await resp.json()
+    if(resp.ok){
+        setValues({
+            name:data.users[0].displayName,
+        url:data.users[0].photoUrl
+        })
+       
+    }
+    else{
+        alert(data.error.message)
+    }
+    }
+    catch(err){
+        console.log(err)
+    }
+
+}
+useEffect(()=>{
+    initlFetch()
+
+
+},[])
 
     return ( 
    <Fragment>
