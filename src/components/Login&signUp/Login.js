@@ -49,6 +49,7 @@ function Login() {
         else{
             auth.setidToken(data.idToken)
             auth.setisLoggesdIn(true)
+            auth.setEmailverify(val.mail)
             nav('/wel',{replace:true})
         }
        

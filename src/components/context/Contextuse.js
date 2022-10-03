@@ -5,12 +5,14 @@ const Contextuse = (props)=>{
 
     const [idToken,setidToken] = useState('') 
     const [isLoggedIn,setisLoggesdIn] = useState(false) 
+    const [emailverify,setEmailverify] = useState('') 
     let val={
         idToken:idToken,
         setidToken:setidToken,
         isLoggedIn:isLoggedIn,
         setisLoggesdIn:setisLoggesdIn,
-       
+        emailverify:emailverify,
+        setEmailverify:setEmailverify
     }
 
     return(
