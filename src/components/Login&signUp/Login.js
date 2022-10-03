@@ -75,7 +75,7 @@ function Login() {
 
                 <div className='signinp'><button className='signbtn sbtn' onClick={sbtlog}>Login</button></div>
                 </form>
-                
+                <NavLink className='navlnkclass'style={{color:'red'}} to='/passreset'>Forgot Password?</NavLink>
             </div>
            <NavLink className='navlnkclass' to={'/'}> <div className='logredirect' >Don't have an Account? Sign Up</div></NavLink>
         </div>
