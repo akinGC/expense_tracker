@@ -47,6 +47,8 @@ function Login() {
             alert(data.error.message) 
         }
         else{
+            localStorage.setItem('expidtok',data.idToken)
+            localStorage.setItem('expsilogin',true)
             auth.setidToken(data.idToken)
             auth.setisLoggesdIn(true)
             auth.setEmailverify(val.mail)

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Contextcreate from "./Contextcreate"
 
 const Contextuse = (props)=>{
@@ -14,6 +14,11 @@ const Contextuse = (props)=>{
         emailverify:emailverify,
         setEmailverify:setEmailverify
     }
+    useEffect(()=>{
+    
+        setidToken(localStorage.getItem('expidtok'))
+        setisLoggesdIn(localStorage.getItem('expsilogin'))
+    },[])
 
     return(
 <Contextcreate.Provider value={val}>{props.children}</Contextcreate.Provider>

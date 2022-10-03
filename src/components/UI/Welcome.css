@@ -24,7 +24,16 @@
     
     max-width: 30vw;
 }
+.rightcontent_wel{
+    display: flex;
+    gap: 1vw;
 
+}
+.logout{
+    color: red;
+    cursor: pointer;
+
+}
 /* Update page  */
 .nav_up_cmp{
     color: blue;
@@ -91,8 +100,8 @@
 }
 .emailverify{
     cursor: pointer;
-    color:rgb(226, 43, 150);
-    margin-left: 40vw;
+    color:darkorange;
+    /* margin-left: 40vw; */
 }
 .upd_thrd:active{
     transform: scale(1.1);

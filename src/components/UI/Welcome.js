@@ -29,6 +29,7 @@ function Welcome() {
     else{
       if(data.email==auth.emailverify){
         settxt('Email Verified')
+       
      
       }
     }
@@ -39,13 +40,23 @@ function Welcome() {
 
 
   }
+
+  function logoutclicked(){
+    localStorage.setItem('expidtok','')
+    localStorage.setItem('expsilogin',false)
+    auth.setidToken('')
+    auth.setisLoggesdIn(false)
+  }
     return ( 
        <div className="wel_nav_contain">
         <div className="wel_nav_quote">Welcome to Expense Tracker!!!</div>
+        <div className='rightcontent_wel'>
         <div className='wel_nav_updatebtn emailverify' onClick={verifymail}>{txt}</div>
           {/* <div className='wel_nav_updatebtn emailverifying' onClick={verifymail}>verifying...</div>
           <div className='wel_nav_updatebtn emailverified' onClick={verifymail}>Email verified</div> */}
         <div className="wel_nav_updatebtn">Your profile is Incomplete.<NavLink to='/update' className='nav_link'>Complete now</NavLink> </div>
+        <di className='wel_nav_updatebtn logout' onClick={logoutclicked}>Logout</di>
+        </div>
        </div>
      );
 }
