@@ -1,0 +1,114 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.expfrm_whole{
+    /* border: 1px solid green; */
+    min-height: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+.expfrminp{
+    height: 5vh;
+    width: 20vw;
+    outline: none;
+    margin-top: 6vh;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.expfrmdesc{
+    border: 1px solid green;
+    border-radius: 5px;
+    padding-left: 5px;
+    min-height: 5vh;
+    min-width: 20vw;
+    max-height: 10vh;
+    max-width: 20vw;
+    margin-top: 5vh;
+}
+.expsel_container{
+    display: flex;
+    flex-direction: column;
+
+}
+.expop{
+    color: green;
+    font-weight: 700;
+    padding-right: 5vw;
+    padding-bottom: 2vh;
+    font-size: larger;
+}
+.exp_select{
+    border: 1px solid green;
+    outline: none;
+    border-radius: 5px;
+    height: 5vh;
+}
+.expsub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+}
+.expsubbtn{
+    color: green;
+    letter-spacing: 0.1vw;
+    border: 1px solid green;
+    border-radius: 12px;
+    height: 6vh;
+    width: 10vw;
+    cursor: pointer;
+    background-color: white;
+}
+.expsubbtn:hover{
+    background-color: green;
+    color: white;
+
+}
+.expsubbtn:active{
+    transform: scale(1.1);
+}
+.fancybrd{
+    border-bottom: 1px solid green;
+    width: 50vw;
+    margin-left: 25%;
+    margin-top: 10vh;
+}
+
+.elist_cnt{
+    width: 50vw;
+    margin-left: 25%;
+    background-color: aliceblue;
+    margin-top: 5vh;
+    height: 15vh;
+    display: flex;
+    padding-left: 2vw;
+}
+.elist_txt{
+    display: flex;
+    
+    width: 36vw;
+    gap: 2vh;
+    padding-top: 1vh;
+}
+.listcatz{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+
+}
+.elist_fancytxt{
+    color: green;
+    font-style: italic;
+   font-weight: 700;
+   /* font-size: large; */
+    text-align: left;
+    
+}
+.list_bind{
+    display: flex;
+    gap: 2vw;
+}

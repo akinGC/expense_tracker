@@ -6,13 +6,19 @@ const Contextuse = (props)=>{
     const [idToken,setidToken] = useState('') 
     const [isLoggedIn,setisLoggesdIn] = useState(false) 
     const [emailverify,setEmailverify] = useState('') 
+    const [array,setarray] = useState([])
+    function arryadd(e){
+        setarray([...array,e])
+    }
     let val={
         idToken:idToken,
         setidToken:setidToken,
         isLoggedIn:isLoggedIn,
         setisLoggesdIn:setisLoggesdIn,
         emailverify:emailverify,
-        setEmailverify:setEmailverify
+        setEmailverify:setEmailverify,
+        arryadd:arryadd,
+        array:array
     }
     useEffect(()=>{
     

@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Contextcreate from '../context/Contextcreate';
+import Eform from '../Expense/Eform';
 import './Welcome.css'
 function Welcome() {
   const auth = useContext(Contextcreate)
@@ -48,7 +49,8 @@ function Welcome() {
     auth.setisLoggesdIn(false)
   }
     return ( 
-       <div className="wel_nav_contain">
+       <Fragment>
+        <div className="wel_nav_contain">
         <div className="wel_nav_quote">Welcome to Expense Tracker!!!</div>
         <div className='rightcontent_wel'>
         <div className='wel_nav_updatebtn emailverify' onClick={verifymail}>{txt}</div>
@@ -58,6 +60,8 @@ function Welcome() {
         <di className='wel_nav_updatebtn logout' onClick={logoutclicked}>Logout</di>
         </div>
        </div>
+       <Eform/>
+       </Fragment>
      );
 }
 
