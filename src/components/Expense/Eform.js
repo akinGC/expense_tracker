@@ -64,6 +64,54 @@ function Eform() {
         }
        
     }
+
+    async function deletelist(e){
+        let name = e.target.id
+        const resp = await fetch(`https://react-2fea7-default-rtdb.asia-southeast1.firebasedatabase.app/exp/${name}.json`,{
+            method:'DELETE'
+        })
+        const data = resp.json()
+        if(!resp.ok){
+            alert(data.error.message)
+        }
+        else{
+            var result=auth.array.filter(obj=> obj.id != name);
+            auth.setarray(result)
+            console.log(result)
+        }
+    }
+
+    async function editlist(e){
+        let name = e.target.name
+        const resp = await fetch(`https://react-2fea7-default-rtdb.asia-southeast1.firebasedatabase.app/exp/${name}.json`,{
+            method:'PUT',
+            body:JSON.stringify(vals)
+        })
+        const data = resp.json()
+        if(!resp.ok){
+            alert(data.error.message)
+        }
+        else{
+  
+          let newarr=[]
+          for(let i=0;i<auth.array.length;i++){
+            if(auth.array[i].id==name){
+             let newJ={
+                    amt:vals.amt,
+                    desc:vals.desc,
+                    cat:vals.cat,
+                    id:name
+                }
+                newarr.push(newJ)
+            }
+            else{
+                newarr.push(auth.array[i])
+            }
+          }
+          console.log(newarr)
+          auth.setarray(newarr)
+        }
+    }
     return ( 
         <Fragment>
             <div className='expfrm_whole'>
@@ -86,7 +134,7 @@ function Eform() {
 
         {
             auth.array.map((itms)=>(
-                <div className='elist_cnt' id={itms.id}>
+                <div className='elist_cnt' >
                 <div className='elist_txt'>
                     <div className='listcatz'>
                     <span className='elist_amt'>Amount:</span>
@@ -99,7 +147,10 @@ function Eform() {
                     <span className='elist_fancytxt'>{itms.cat}</span>
                     </div>
                 </div>
-                <div className='elist_btns'></div>   
+                <div className='elist_btns'>
+                    <button className='expedit' name={itms.id} onClick={editlist}>Edit</button>
+                    <button className='expedit'id={itms.id} onClick={deletelist}>Delete</button>
+                    </div>   
             </div>
             ))
            }

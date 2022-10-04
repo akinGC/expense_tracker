@@ -48,7 +48,8 @@ const Contextuse = (props)=>{
         emailverify:emailverify,
         setEmailverify:setEmailverify,
         arryadd:arryadd,
-        array:array
+        array:array,
+        setarray:setarray
     }
     useEffect(()=>{
         expfetch()

@@ -112,3 +112,20 @@
     display: flex;
     gap: 2vw;
 }
+.expedit{
+    margin-left: 1vw;
+    outline: none;
+    border: 1px solid green;
+    border-radius: 5px;
+    height: 4vh;
+    width: 5vw;
+    cursor: pointer;
+    margin-top: 5vh;
+}
+.expedit:active{
+    transform: scale(1.1);
+}
+.expedit:hover{
+    color: white;
+    background-color: green;
+}
