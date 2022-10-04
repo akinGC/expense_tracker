@@ -8,6 +8,7 @@ function Eform() {
         amt:null,
         desc:'',
         cat:'--select--'
+        
     })
 
     function onchangehndle(e){
@@ -26,9 +27,37 @@ function Eform() {
         }
     }
 
-    function addexpense(){
+  async  function addexpense(){
         if(vals.amt!=null && vals.desc!=='' && vals.cat!='--select--'){
-            auth.arryadd(vals)
+            try{
+                const resp = await fetch('https://react-2fea7-default-rtdb.asia-southeast1.firebasedatabase.app/exp.json',{
+                    method:'POST',
+                    body:JSON.stringify(vals)
+                })
+                const data = await resp.json()
+                if(!resp.ok){
+                    alert(data.error.message)
+                }
+                else{
+                    console.log(data.name)
+                    let newObj={
+                        amt:vals.amt,
+                        desc:vals.desc,
+                        cat:vals.cat,
+                        id:data.name
+                    }
+                    auth.arryadd(newObj)
+                    setvals({
+                        amt:'',
+                        desc:'',
+                        cat:'--select--'
+                    })
+                }
+            }
+            catch(err){
+                console.log(err)
+            }
+            // auth.arryadd(vals)
         }
         else{
             alert('All fields are mandatory')
