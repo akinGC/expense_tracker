@@ -1,6 +1,38 @@
+
+.toggle-theme{
+   /* border: 1px solid red; */
+   display: flex;
+   justify-content: right;
+   padding-right: 5vw;
+   font-weight: 700;
+
+   cursor: pointer;
+}
+.toggletxt{
+    text-decoration: line-through;
+}
+:root{
+    --background:white;
+    --text-primary:black;
+    --text-secondary:green
+}
+[data-theme='dark'] {
+    --background:black;
+    --text-primary:white;
+    --text-secondary:green
+}
 *{
     margin: 0%;
     padding: 0%;
+    
+}
+#a1{
+    color: green;
+    text-decoration: none;
+}
+.downlodtxt{
+    color: green;
+    margin-left: 1vw;
 }
 .expfrm_whole{
     /* border: 1px solid green; */
@@ -8,6 +40,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    background-color: var(--background);
     
 }
 .expfrminp{
@@ -81,11 +114,12 @@
 .elist_cnt{
     width: 50vw;
     margin-left: 25%;
-    background-color: aliceblue;
+    background-color:var(--background);
     margin-top: 5vh;
     height: 15vh;
     display: flex;
     padding-left: 2vw;
+    border-radius: 5px;
 }
 .elist_txt{
     display: flex;
@@ -98,6 +132,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5vh;
+    color: var(--text-primary);
 
 }
 .elist_fancytxt{

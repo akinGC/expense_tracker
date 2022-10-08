@@ -12,15 +12,21 @@ import Welcome from './components/UI/Welcome';
 import {useSelector,useDispatch} from 'react-redux'
 import { authaction } from './components/redux/Auth';
 import {expaction ,initfetch} from './components/redux/Expensereduce'
+import {premiumfetch} from './components/redux/Premium'
+import dark from './components/UI/Theme'
 function App() {
   // const auth = useContext(Contextcreate)
   const dispatch = useDispatch()
-
+  const arry = useSelector(state=>state.exp.array)
   const logdin = useSelector(state=>state.auth.isLoggedIn)
-  
+  useEffect(()=>{
+    dispatch(premiumfetch(arry))
+   
+  },[arry])
   useEffect(()=>{
     // expfetch()
     dispatch(initfetch())
+    // document.body.style.backgroundColor='black'
     // setidToken(localStorage.getItem('expidtok'))
     dispatch(authaction.seIdToken(localStorage.getItem('expidtok')))
     // setisLoggesdIn(localStorage.getItem('expsilogin'))
@@ -29,7 +35,7 @@ function App() {
   return (
 
     <Routes>
-      <Route path='/' element={<Welcome/>}/>
+      <Route path='/' element={<SignUp/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/update' element={logdin?<Update/>:<Login/>}/>
       <Route path='/wel' element={logdin? <Welcome/>:<Login/>}/>

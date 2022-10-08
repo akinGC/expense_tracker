@@ -1,10 +1,13 @@
-import { Fragment, useContext, useState } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import Contextcreate from '../context/Contextcreate';
 import {useSelector,useDispatch} from 'react-redux'
 import './Exp.css'
 import { expaction } from '../redux/Expensereduce';
-function Eform() {
+import {premiumAction} from '../redux/Premium'
+function Eform(props) {
     const arrayget = useSelector(state=>state.exp.array)
+    const isPremium = useSelector(state=>state.premium.isPremium)
+    const theme = useSelector(state=>state.premium.theme)
     // console.log(arrayget)
     // const auth = useContext(Contextcreate)
     const dispatch = useDispatch()
@@ -51,6 +54,7 @@ function Eform() {
                         id:data.name
                     }
                     dispatch(expaction.arrayset(newObj))
+
                     setvals({
                         amt:'',
                         desc:'',
@@ -79,12 +83,12 @@ function Eform() {
             alert(data.error.message)
         }
         else{
-            console.log(arrayget)
+            // console.log(arrayget)
             var result=arrayget.filter(obj=> obj.id != name);
             // auth.setarray(result)
             // dispatch(expaction.arrayreplace(result))
             dispatch(expaction.arrayreplace(result))
-            console.log(result)
+            // console.log(result)
         }
     }
 
@@ -120,9 +124,27 @@ function Eform() {
           dispatch(expaction.arrayreplace(newarr))
         }
     }
+    const [modetxt,setmodetxt] =useState('Dark mode')
+    function themechng(){
+        modetxt=='Dark mode'?setmodetxt('Light mode'):setmodetxt('Dark mode')
+        modetxt=='Dark mode'?dispatch(premiumAction.setheme('dark')):dispatch(premiumAction.setheme('light'))
+       
+
+    }
+  
+   
+    function makeCSV(array){
+       return  array.map(itm=>JSON.stringify(itm))
+    }
+    // 
+    let blob1=new Blob(makeCSV(arrayget))
+    // console.log(makeCSV(arrayget))
     return ( 
-        <Fragment>
-            <div className='expfrm_whole'>
+        <div data-theme={theme}>
+           {props.val && <div className='toggle-theme' ><span onClick={themechng} className='toggletxt'>{modetxt}</span>
+           <span className='downlodtxt'><a id='a1'download='file.csv'href={URL.createObjectURL(blob1)} >Download</a></span>
+           </div>}
+            <div className='expfrm_whole' >
             <input type='number' name='amt' className='expfrminp'placeholder='Enter Amount'value={vals.amt} onChange={onchangehndle}></input>
             <textarea type='number' maxLength='60'onChange={onchangehndle} name='desc' className='expfrmdesc' rows='5'placeholder='Expense Description' value={vals.desc}></textarea>
             <div className='expsel_container'>
@@ -137,7 +159,7 @@ function Eform() {
             </div>
             
         </div>
-        <div className='expsub'><button className='expsubbtn' onClick={addexpense}>ADD Expense</button></div>
+        <div className='expsub ligth-theme'><button className='expsubbtn' onClick={addexpense}>ADD Expense</button></div>
         <div className='fancybrd'></div>
 
         {
@@ -164,7 +186,7 @@ function Eform() {
            }
         
 
-        </Fragment>
+        </div>
         
         );
 }

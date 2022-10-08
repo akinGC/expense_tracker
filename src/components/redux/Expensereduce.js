@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-
+import {premiumAction} from './Premium'
 let init={
     emailverify:'',
     array:[]
@@ -44,6 +44,7 @@ export const initfetch = ()  =>{
                     finalarr.push(newObj)      
                 }
                 dispatch(expaction.arrayreplace(finalarr))
+                
             }
             }
             fetchin()

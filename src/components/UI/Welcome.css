@@ -2,13 +2,22 @@
     margin: 0%;
     padding: 0%;
 }
+:root{
+    --background:white;
+    --pricolor:grey
+}
+[data-theme='dark']{
+    --background:black;
+    --pricolor:white
+}
 .wel_nav_contain{
     border-bottom: 1px solid grey;
     display: flex;
     justify-content: space-between;
     padding: 3vh 2vw;
-    color: grey;
+    color: var(--pricolor);
     font-style: italic;
+    background-color: var(--background);
 }
 .nav_link{
     text-decoration: none;

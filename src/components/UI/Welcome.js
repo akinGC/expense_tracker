@@ -10,9 +10,10 @@ function Welcome() {
   // const auth = useContext(Contextcreate)
   const dispatch = useDispatch()
   const idtokrnget = useSelector(state=>state.auth.idToken)
+  const premiumstate = useSelector(state=>state.premium.isPremium)
   const emailverifyget = useSelector(state=>state.exp.emailverify)
   const [txt,settxt] = useState('Verify Email')
-
+  const theme = useSelector(state=>state.premium.theme)
   async function verifymail(){
     try{
       settxt('Verifying...')
@@ -56,11 +57,16 @@ function Welcome() {
     // auth.setisLoggesdIn(false)
     dispatch(authaction.setloged(false))
   }
+  const [premiumclicked,setPremiumclicked]=useState(false)
+  function premiumclickedd(){
+    setPremiumclicked(!premiumclicked)
+  }
     return ( 
        <Fragment>
-        <div className="wel_nav_contain">
+        <div className="wel_nav_contain" data-theme={theme}>
         <div className="wel_nav_quote">Welcome to Expense Tracker!!!</div>
         <div className='rightcontent_wel'>
+        {premiumstate && <div className='wel_nav_updatebtn emailverify' style={{color:'indigo'}} onClick={premiumclickedd}>Premium</div>}
         <div className='wel_nav_updatebtn emailverify' onClick={verifymail}>{txt}</div>
           {/* <div className='wel_nav_updatebtn emailverifying' onClick={verifymail}>verifying...</div>
           <div className='wel_nav_updatebtn emailverified' onClick={verifymail}>Email verified</div> */}
@@ -68,7 +74,7 @@ function Welcome() {
         <di className='wel_nav_updatebtn logout' onClick={logoutclicked}>Logout</di>
         </div>
        </div>
-       <Eform/>
+       <Eform val={premiumclicked}/>
        </Fragment>
      );
 }
