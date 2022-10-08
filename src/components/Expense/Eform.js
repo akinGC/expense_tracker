@@ -141,7 +141,7 @@ function Eform(props) {
     // console.log(makeCSV(arrayget))
     return ( 
         <div data-theme={theme}>
-           {props.val && <div className='toggle-theme' ><span onClick={themechng} className='toggletxt'>{modetxt}</span>
+           {isPremium && props.val && <div className='toggle-theme' ><span onClick={themechng} className='toggletxt'>{modetxt}</span>
            <span className='downlodtxt'><a id='a1'download='file.csv'href={URL.createObjectURL(blob1)} >Download</a></span>
            </div>}
             <div className='expfrm_whole' >
