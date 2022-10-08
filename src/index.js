@@ -5,15 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Contextuse from './components/context/Contextuse';
 import { BrowserRouter } from 'react-router-dom';
-
+import {Provider} from 'react-redux'
+import store from './components/redux/Store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Contextuse>
+    <Provider store={store}>
       <BrowserRouter>
+      
       <App /></BrowserRouter>
       
-      </Contextuse>
+      </Provider>
   </React.StrictMode>
 );
 

@@ -2,10 +2,15 @@ import { Fragment, useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Contextcreate from '../context/Contextcreate';
 import Eform from '../Expense/Eform';
+import {useSelector,useDispatch} from 'react-redux'
+import { expaction } from '../redux/Expensereduce';
+import { authaction } from '../redux/Auth';
 import './Welcome.css'
 function Welcome() {
-  const auth = useContext(Contextcreate)
-
+  // const auth = useContext(Contextcreate)
+  const dispatch = useDispatch()
+  const idtokrnget = useSelector(state=>state.auth.idToken)
+  const emailverifyget = useSelector(state=>state.exp.emailverify)
   const [txt,settxt] = useState('Verify Email')
 
   async function verifymail(){
@@ -15,7 +20,7 @@ function Welcome() {
       method:'POST',
       body:JSON.stringify({
         requestType:'VERIFY_EMAIL',
-        idToken:auth.idToken
+        idToken:idtokrnget
       }),
       headers:{
         'Content-Type': 'application/json'
@@ -25,10 +30,11 @@ function Welcome() {
     if(!resp.ok){
       alert (data.error.message)
       settxt('Verify Email')
-      auth.setisLoggesdIn(false)
+      // auth.setisLoggesdIn(false)
+      dispatch(authaction.setloged(false))
     }
     else{
-      if(data.email==auth.emailverify){
+      if(data.email==emailverifyget){
         settxt('Email Verified')
        
      
@@ -45,8 +51,10 @@ function Welcome() {
   function logoutclicked(){
     localStorage.setItem('expidtok','')
     localStorage.setItem('expsilogin',false)
-    auth.setidToken('')
-    auth.setisLoggesdIn(false)
+    // auth.setidToken('')
+    dispatch(authaction.seIdToken(''))
+    // auth.setisLoggesdIn(false)
+    dispatch(authaction.setloged(false))
   }
     return ( 
        <Fragment>

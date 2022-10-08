@@ -5,9 +5,10 @@ import { Fragment, useContext, useEffect, useState } from 'react';
 import './Welcome.css'
 import { useNavigate } from 'react-router-dom';
 import Contextcreate from '../context/Contextcreate';
+import {useSelector} from 'react-redux'
 function Update() {
-   
-    const auth = useContext(Contextcreate)
+   const idtokenval = useSelector(state=>state.auth.idToken)
+    // const auth = useContext(Contextcreate)
     const nav=useNavigate()
     const [showtxt,setshowtxt] = useState(false)
     const [values,setValues]=useState({
@@ -39,7 +40,7 @@ function redirectowelPage(){
         const resp = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBlpCleMXXgnN35xDSjEfIsKsfLOS6wNVM',{
         method:'POST',
         body:JSON.stringify({
-            idToken:auth.idToken,
+            idToken:idtokenval,
             displayName:values.name,
             photoUrl:values.url,
             returnSecureToken:false
@@ -66,7 +67,7 @@ async function initlFetch(){
         const resp = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBlpCleMXXgnN35xDSjEfIsKsfLOS6wNVM',{
         method:'POST',
         body:JSON.stringify({
-            idToken:auth.idToken
+            idToken:idtokenval
         })
 
     })

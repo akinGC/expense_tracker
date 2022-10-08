@@ -1,9 +1,13 @@
 import { Fragment, useContext, useState } from 'react';
 import Contextcreate from '../context/Contextcreate';
+import {useSelector,useDispatch} from 'react-redux'
 import './Exp.css'
-
+import { expaction } from '../redux/Expensereduce';
 function Eform() {
-    const auth = useContext(Contextcreate)
+    const arrayget = useSelector(state=>state.exp.array)
+    // console.log(arrayget)
+    // const auth = useContext(Contextcreate)
+    const dispatch = useDispatch()
     const [vals,setvals]= useState({
         amt:null,
         desc:'',
@@ -39,14 +43,14 @@ function Eform() {
                     alert(data.error.message)
                 }
                 else{
-                    console.log(data.name)
+                    // console.log(data.name)
                     let newObj={
                         amt:vals.amt,
                         desc:vals.desc,
                         cat:vals.cat,
                         id:data.name
                     }
-                    auth.arryadd(newObj)
+                    dispatch(expaction.arrayset(newObj))
                     setvals({
                         amt:'',
                         desc:'',
@@ -75,8 +79,11 @@ function Eform() {
             alert(data.error.message)
         }
         else{
-            var result=auth.array.filter(obj=> obj.id != name);
-            auth.setarray(result)
+            console.log(arrayget)
+            var result=arrayget.filter(obj=> obj.id != name);
+            // auth.setarray(result)
+            // dispatch(expaction.arrayreplace(result))
+            dispatch(expaction.arrayreplace(result))
             console.log(result)
         }
     }
@@ -94,8 +101,8 @@ function Eform() {
         else{
   
           let newarr=[]
-          for(let i=0;i<auth.array.length;i++){
-            if(auth.array[i].id==name){
+          for(let i=0;i<arrayget.length;i++){
+            if(arrayget[i].id==name){
              let newJ={
                     amt:vals.amt,
                     desc:vals.desc,
@@ -105,11 +112,12 @@ function Eform() {
                 newarr.push(newJ)
             }
             else{
-                newarr.push(auth.array[i])
+                newarr.push(arrayget[i])
             }
           }
-          console.log(newarr)
-          auth.setarray(newarr)
+        //   console.log(newarr)
+        //   auth.setarray(newarr)
+          dispatch(expaction.arrayreplace(newarr))
         }
     }
     return ( 
@@ -133,7 +141,7 @@ function Eform() {
         <div className='fancybrd'></div>
 
         {
-            auth.array.map((itms)=>(
+           arrayget.map((itms)=>(
                 <div className='elist_cnt' >
                 <div className='elist_txt'>
                     <div className='listcatz'>

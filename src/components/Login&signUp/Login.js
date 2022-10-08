@@ -3,9 +3,12 @@ import bgimg from '../Resources/signbg.png'
 import { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Contextcreate from '../context/Contextcreate';
-
+import {useDispatch} from 'react-redux'
+import {authaction} from '../redux/Auth'
+import {expaction} from '../redux/Expensereduce'
 function Login() {
-    const auth = useContext(Contextcreate)
+    // const auth = useContext(Contextcreate)
+    const dispatch = useDispatch()
     const nav=useNavigate()
    
     
@@ -49,9 +52,12 @@ function Login() {
         else{
             localStorage.setItem('expidtok',data.idToken)
             localStorage.setItem('expsilogin',true)
-            auth.setidToken(data.idToken)
-            auth.setisLoggesdIn(true)
-            auth.setEmailverify(val.mail)
+            // auth.setidToken(data.idToken)
+            dispatch(authaction.seIdToken(data.idToken))
+            // auth.setisLoggesdIn(true)
+            dispatch(authaction.setloged(true))
+            // auth.setEmailverify(val.mail)
+            dispatch(expaction.emailverify(val.mail))
             nav('/wel',{replace:true})
         }
        
