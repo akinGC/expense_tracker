@@ -14,6 +14,7 @@ import { authaction } from './components/redux/Auth';
 import {expaction ,initfetch} from './components/redux/Expensereduce'
 import {premiumfetch} from './components/redux/Premium'
 import dark from './components/UI/Theme'
+import ProtectedRoute from './components/nav/ProtectedRoute';
 function App() {
   // const auth = useContext(Contextcreate)
   const dispatch = useDispatch()
@@ -32,14 +33,19 @@ function App() {
     // setisLoggesdIn(localStorage.getItem('expsilogin'))
     dispatch(authaction.setloged(localStorage.getItem('expsilogin')))
 },[])
+console.log(logdin)
   return (
 
     <Routes>
       <Route path='/' element={<SignUp/>}/>
       <Route path='/login' element={<Login/>}/>
-      <Route path='/update' element={logdin?<Update/>:<Login/>}/>
-      <Route path='/wel' element={logdin? <Welcome/>:<Login/>}/>
+  
+      <Route path='/update' element={ <ProtectedRoute ><Update/></ProtectedRoute> }/>
+      <Route path='/wel' element={ <ProtectedRoute ><Welcome/></ProtectedRoute> }/>
+      {/* <Route path='/update' element={ logdin ? <Update/> : <Login/>}/> */}
+      {/* <Route path='/wel' element={ logdin ? <Welcome/> : <Login/>}/> */}
       <Route path='/passreset' element={<Passreset/>}/>
+      <Route path="*" element={<p>There's nothing here: 404!</p>} />
     </Routes>
     
   );

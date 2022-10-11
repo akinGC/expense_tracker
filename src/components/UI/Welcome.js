@@ -1,5 +1,5 @@
 import { Fragment, useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Contextcreate from '../context/Contextcreate';
 import Eform from '../Expense/Eform';
 import {useSelector,useDispatch} from 'react-redux'
@@ -7,6 +7,7 @@ import { expaction } from '../redux/Expensereduce';
 import { authaction } from '../redux/Auth';
 import './Welcome.css'
 function Welcome() {
+  const nav = useNavigate()
   // const auth = useContext(Contextcreate)
   const dispatch = useDispatch()
   const idtokrnget = useSelector(state=>state.auth.idToken)
@@ -50,13 +51,17 @@ function Welcome() {
   }
 
   function logoutclicked(){
+
     localStorage.setItem('expidtok','')
     localStorage.setItem('expsilogin',false)
     // auth.setidToken('')
     dispatch(authaction.seIdToken(''))
     // auth.setisLoggesdIn(false)
     dispatch(authaction.setloged(false))
+    nav('/login',{replace:true})
+
   }
+
   const [premiumclicked,setPremiumclicked]=useState(false)
   function premiumclickedd(){
     setPremiumclicked(!premiumclicked)
