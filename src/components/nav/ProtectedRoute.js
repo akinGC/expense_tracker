@@ -1,11 +1,14 @@
 
 import {useSelector,useDispatch} from 'react-redux'
-import { useNavigate,Navigate } from 'react-router-dom';
-function ProtectedRoute({ children }) {
-    const nav = useNavigate()
+import { useNavigate,Navigate, Outlet } from 'react-router-dom';
+import Update from '../UI/Update';
+function ProtectedRoute() {
+    const nav= useNavigate()
     const logdin = useSelector(state=>state.auth.isLoggedIn)
     // const auth = useAuth();
-    return logdin ? children : <Navigate to="/login" />;
+
+   
+    return logdin ? <Outlet/> : <Navigate to='/login'/>;
   }
 
   export default ProtectedRoute

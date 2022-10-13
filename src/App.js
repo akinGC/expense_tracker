@@ -33,16 +33,20 @@ function App() {
     // setisLoggesdIn(localStorage.getItem('expsilogin'))
     dispatch(authaction.setloged(localStorage.getItem('expsilogin')))
 },[])
-console.log(logdin)
+// console.log(logdin)
   return (
 
     <Routes>
+      {console.log(logdin)}
       <Route path='/' element={<SignUp/>}/>
       <Route path='/login' element={<Login/>}/>
   
-      <Route path='/update' element={ <ProtectedRoute ><Update/></ProtectedRoute> }/>
-      <Route path='/wel' element={ <ProtectedRoute ><Welcome/></ProtectedRoute> }/>
-      {/* <Route path='/update' element={ logdin ? <Update/> : <Login/>}/> */}
+      {/* <Route path='/update' element={ <ProtectedRoute ><Update/></ProtectedRoute> }/> */}
+      <Route  element={ <ProtectedRoute />}>
+              <Route path='/wel' element={<Welcome/>}/>
+              <Route path='/update' element={<Update/>}/>
+      </Route>
+    
       {/* <Route path='/wel' element={ logdin ? <Welcome/> : <Login/>}/> */}
       <Route path='/passreset' element={<Passreset/>}/>
       <Route path="*" element={<p>There's nothing here: 404!</p>} />

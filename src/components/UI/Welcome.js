@@ -7,6 +7,7 @@ import { expaction } from '../redux/Expensereduce';
 import { authaction } from '../redux/Auth';
 import './Welcome.css'
 function Welcome() {
+
   const nav = useNavigate()
   // const auth = useContext(Contextcreate)
   const dispatch = useDispatch()

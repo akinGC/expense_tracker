@@ -1,8 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 let init={
-    idToken:'',
-    isLoggedIn:false
+    idToken:localStorage.getItem('expidtok'),
+    isLoggedIn:localStorage.getItem('expidtok')?true:false
 }
 const auth = createSlice({
     name:'auth',

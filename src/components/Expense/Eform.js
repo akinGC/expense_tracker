@@ -1,10 +1,11 @@
-import { Fragment, useContext, useEffect, useState } from 'react';
-import Contextcreate from '../context/Contextcreate';
+import {  useState } from 'react';
+
 import {useSelector,useDispatch} from 'react-redux'
 import './Exp.css'
 import { expaction } from '../redux/Expensereduce';
 import {premiumAction} from '../redux/Premium'
 function Eform(props) {
+   
     const arrayget = useSelector(state=>state.exp.array)
     const isPremium = useSelector(state=>state.premium.isPremium)
     const theme = useSelector(state=>state.premium.theme)
@@ -132,12 +133,13 @@ function Eform(props) {
 
     }
   
-   
+
     function makeCSV(array){
        return  array.map(itm=>JSON.stringify(itm))
     }
     // 
     let blob1=new Blob(makeCSV(arrayget))
+
     // console.log(makeCSV(arrayget))
     return ( 
         <div data-theme={theme}>
